@@ -1,4 +1,5 @@
 class Day
+  
 
   attr_reader :customers
 

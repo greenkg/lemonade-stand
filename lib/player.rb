@@ -2,6 +2,8 @@ require_relative 'day'
 
 class Player
 
+  attr_reader :cash
+
   def initialize
     @cash = 100
     @lemons = 2
@@ -27,6 +29,7 @@ class Player
   end
 
   def buy_lemons(n)
+    n = n.to_i
     @lemons += n
     @cash -= (5 * n)
     puts "You bought #{n} lemons for $#{n * 5}."

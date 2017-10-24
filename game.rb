@@ -26,38 +26,40 @@ private
       while @player.has_cash? && @day < 6
         puts "Day #{@day}. Here's where you're at:"
         @player.print_status
-        action = take_player_input
-        if ACTIONS.include? action
-          take_action(action)
-        else
-          puts ">>>> I'm sorry, I don't understand."
-          next
-        end
+        take_player_input
       end
 
-      puts "Game over!"
+      puts "Game over! Your score is #{@player.cash - 100}"
     end
 
     def take_player_input
       print "What would you like to do next? >> "
-      gets.chomp.gsub(/ /, "_").to_sym
+      player_input = gets.chomp
+      take_action(player_input)
     end
 
-    def take_action(action)
-      case action
-      when :buy_lemons
-        @player.buy_lemons(1)
-      when :buy_sugar
-        @player.buy_sugar(1)
-      when :buy_ice
-        @player.buy_ice(1)
-      when :buy_cups
-        @player.buy_cups(20)
-      when :make_lemonade
-        @player.make_lemonade(1, 1, 1)
-      when :start_day
+    def take_action(input)
+      quantity = input[/\d+/] || 1
+      if input[/lemon/]
+        puts "You buy #{quantity} lemons."
+        @player.buy_lemons(quantity)
+      elsif input[/ice/]
+        puts "You buy #{quantity} bags of ice."
+        @player.buy_ice(quantity)
+      elsif input[/sugar/]
+        puts "You buy #{quantity} cups of ice."
+        @player.buy_sugar(quantity)
+      elsif input[/cup/]
+        puts "You buy #{quantity} cups."
+        @player.buy_cups(quantity)
+      elsif input[/lemonade/]
+        puts "You make #{quantity} pitchers of lemonade"
+        @player.make_lemonade(quantity, quantity, quantity)
+      elsif input[/start day/]
+        puts "The day begins."
         @player.start_day
-        @day += 1
+      else
+        puts ">>>>> I'm sorry, I don't undestand your command."
       end
     end
 

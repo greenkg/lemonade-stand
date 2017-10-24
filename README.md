@@ -39,6 +39,7 @@ You are the proprietor of a small lemonade stand. You have 30 days to try to mak
 - [ ] Deplete all ice (melted)
 - [ ] Deplete random number of spoiled lemons
 - [ ] Have an event affect the number of customers
+- [ ] Have time pass as the day passes
 
 #### Basic World Operations
 
