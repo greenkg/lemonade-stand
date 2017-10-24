@@ -9,10 +9,12 @@ class Game
   WELCOME_MESSAGE = 
     "Hello proprietor. Welcome to lemonade stand.
     \nYou have 30 days to make as much money as possible.
-    \nA pitcher of lemonade is 10 cups."
+    \nA pitcher of lemonade is 10 cups.
+    \nYou can enter actions: buy lemons (or sugar, ice, cups), make lemonade, and start day."
 
   def initialize
     @player = Player.new
+    @day = 1
 
     start_game
   end
@@ -21,7 +23,8 @@ private
   
     def start_game
       puts WELCOME_MESSAGE
-      while @player.has_cash?
+      while @player.has_cash? && @day < 6
+        puts "Day #{@day}. Here's where you're at:"
         @player.print_status
         action = take_player_input
         if ACTIONS.include? action
@@ -31,15 +34,16 @@ private
           next
         end
       end
+
+      puts "Game over!"
     end
 
     def take_player_input
       print "What would you like to do next? >> "
-      gets.chomp.gsub!(/ /, "_").to_sym
+      gets.chomp.gsub(/ /, "_").to_sym
     end
 
     def take_action(action)
-      puts "Requested action is #{action}."
       case action
       when :buy_lemons
         @player.buy_lemons(1)
@@ -53,6 +57,7 @@ private
         @player.make_lemonade(1, 1, 1)
       when :start_day
         @player.start_day
+        @day += 1
       end
     end
 

@@ -63,7 +63,7 @@ class Player
   end
 
   def start_day
-    max_cups = @cups > @pitchers/20 ? @cups : @pitchers/20
+    max_cups = @cups > @pitchers*10 ? @pitchers*10 : @cups
     day = Day.new(max_cups)
     day.print_description
     revenue = day.customers * 1
