@@ -26,7 +26,7 @@ You are the proprietor of a small lemonade stand. You have 30 days to try to mak
 
 #### More Complex Player Actions
 
-- [ ] Buy x lemons (cups of sugar/bags of ice/cups)
+- [x] Buy x lemons (cups of sugar/bags of ice/cups)
 
 #### Basic Day Operations
 
@@ -43,7 +43,7 @@ You are the proprietor of a small lemonade stand. You have 30 days to try to mak
 
 #### Basic World Operations
 
-- [ ] Keep track of what day it is, so game can end after 30 days.
+- [x] Keep track of what day it is, so game can end after 30 days. (currently ends after 5 days)
 
 #### More complicated features to be broken down:
 
