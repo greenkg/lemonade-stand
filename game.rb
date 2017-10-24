@@ -40,23 +40,28 @@ private
 
     def take_action(input)
       quantity = input[/\d+/] || 1
-      if input[/lemon/]
-        puts "You buy #{quantity} lemons."
-        @player.buy_lemons(quantity)
-      elsif input[/ice/]
-        puts "You buy #{quantity} bags of ice."
-        @player.buy_ice(quantity)
-      elsif input[/sugar/]
-        puts "You buy #{quantity} cups of ice."
-        @player.buy_sugar(quantity)
-      elsif input[/cup/]
-        puts "You buy #{quantity} cups."
-        @player.buy_cups(quantity)
+      if input[/buy/]
+        message = "You want to buy #{quantity} "
+        if input[/lemon/]
+          puts message + "lemons."
+          @player.buy("lemons", quantity)
+        elsif input[/ice/]
+          puts message + "bags of ice."
+          @player.buy("ice", quantity)
+        elsif input[/sugar/]
+          puts message + "cups of sugar."
+          @player.buy("sugar", quantity)
+        elsif input[/cup/]
+          puts message + "cups."
+          @player.buy("cups", quantity)
+        else
+          puts "I'm sorry, you can't buy that."
+        end
       elsif input[/lemonade/]
-        puts "You make #{quantity} pitchers of lemonade"
+        puts "You want to make #{quantity} pitchers of lemonade"
         @player.make_lemonade(quantity, quantity, quantity)
       elsif input[/start day/]
-        puts "The day begins."
+        puts "You want to start the day."
         @player.start_day
       else
         puts ">>>>> I'm sorry, I don't undestand your command."
