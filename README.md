@@ -49,8 +49,8 @@ You are the proprietor of a small lemonade stand. You have 30 days to try to mak
 #### More complicated features to be broken down:
 
 - [ ] Change lemonade recipe (player?)
-- [ ] Have a popularity score that changes based on customer enjoyment (world?)
-- [ ] Have customer enjoyment affected by lemonade recipe (day?)
+- [X] Have a popularity score that changes based on customer enjoyment [customer base]
+- [X] Have customer enjoyment affected by lemonade recipe
 - [ ] Include random weather and random other events to affect number of customers (world? day?)
 - [ ] Ability to change price per cup, which should affect # of customers, or customer enjoyment (although, does paying more actually make the customers like it more?)
 
