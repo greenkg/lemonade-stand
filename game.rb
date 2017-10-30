@@ -59,7 +59,7 @@ private
         end
       elsif input[/lemonade/]
         puts "You want to make #{quantity} pitchers of lemonade"
-        @player.make_lemonade(quantity, quantity, quantity)
+        @player.make_lemonade(quantity)
       elsif input[/start day/]
         puts "You want to start the day."
         @player.start_day

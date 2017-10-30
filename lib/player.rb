@@ -1,5 +1,6 @@
 require_relative 'day'
 require_relative 'inventory'
+require_relative 'recipe'
 
 
 class Player
@@ -8,6 +9,8 @@ class Player
 
   def initialize
     @inventory = Inventory.new
+    @recipe = Recipe.new(4, 0.5, 4)
+    @base_customers = 10
   end
 
   def print_status
@@ -31,24 +34,29 @@ class Player
     end
   end
 
-  def make_lemonade(lemons, sugar, ice)
-    if @inventory.get_lemons >= lemons && @inventory.get_sugar >= sugar && @inventory.get_ice >= ice
-      @inventory.make_pitchers(1)
-      @inventory.use_lemons(1)
-      @inventory.use_sugar(1)
-      @inventory.use_ice(1)      
+  def make_lemonade(qty = 1)
+    if @inventory.get_lemons >= @recipe.lemons*qty && @inventory.get_sugar >= @recipe.sugar*qty && @inventory.get_ice >= @recipe.ice*qty
+      @inventory.make_pitchers(qty)
+      @inventory.use_lemons(qty)
+      @inventory.use_sugar(qty)
+      @inventory.use_ice(qty)      
     else
-      puts "You need #{lemons} lemons, #{sugar} cups of sugar, and #{ice} bags of ice to make a pitcher of lemonade."
+      puts "You need #{@recipe.lemons} lemons, #{@recipe.sugar} cups of sugar, and #{@recipe.ice} bags of ice to make a pitcher of lemonade."
     end
   end
 
   def start_day
-    day = Day.new(@inventory.get_max_sales)
+    day = Day.new(@inventory.get_max_sales, @base_customers, @recipe.avg_enjoyment)
     day.print_description
     revenue = day.customers * 1
     @inventory.add_cash(revenue)
     @inventory.use_cups(day.customers)
     @inventory.use_pitchers
+  end
+
+  def update_base_customers(prior_day_customers)
+    growth_from_prior_day = prior_day_customers * @recipe.avg_enjoyment * 0.25
+    @base_customers = @base_customers + growth_from_prior_day.to_i
   end
 
 end
