@@ -5,14 +5,11 @@ class Inventory
   end
 
   def print_inventory
-    puts "*" * 50
-    puts "Cash: $#{get_cash}"
-    puts "Lemons: #{get_lemons} lemons"
-    puts "Sugar: #{get_sugar} cups"
-    puts "Ice: #{get_ice} bags"
-    puts "Cups: #{get_cups} cups"
+    puts "*" * 10
+    puts "CASH: $#{get_cash}"
+    puts "INVENTORY: Lemons: #{get_lemons} lemons. Sugar: #{get_sugar} cups. Ice: #{get_ice} bags. Cups: #{get_cups} cups"
     puts "Pitchers of lemonade: #{get_pitchers} pitchers"
-    puts "*" * 50
+    puts "*" * 10
   end
 
   def get_cash

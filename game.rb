@@ -23,9 +23,8 @@ private
   
     def start_game
       puts WELCOME_MESSAGE
+      @player.print_status
       while @player.has_cash? && @day < 6
-        puts "Day #{@day}. Here's where you're at:"
-        @player.print_status
         take_player_input
       end
 
@@ -33,7 +32,7 @@ private
     end
 
     def take_player_input
-      print "What would you like to do next? >> "
+      puts "Day #{@day} What would you like to do next? >> "
       player_input = gets.chomp
       take_action(player_input)
     end
@@ -63,6 +62,8 @@ private
       elsif input[/start day/]
         puts "You want to start the day."
         @player.start_day
+        @player.print_status
+        @day += 1
       else
         puts ">>>>> I'm sorry, I don't undestand your command."
       end

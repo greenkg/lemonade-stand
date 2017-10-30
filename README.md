@@ -13,6 +13,7 @@ You are the proprietor of a small lemonade stand. You have 30 days to try to mak
 #### Game
 
 - [ ] Display player score when game ends
+- [ ] Display complete instructions at the beginning of the game
 
 #### Basic Player Actions
 

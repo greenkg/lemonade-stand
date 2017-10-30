@@ -9,8 +9,8 @@ class Recipe
     @satisfaction
   end
 
-  def to_s
-    "RECIPE: Lemons: #{@lemons}. Cups of sugar: #{@sugar}. Cups of ice: #{@ice}."
+  def print_recipe
+    puts "RECIPE: Lemons: #{@lemons}. Cups of sugar: #{@sugar}. Cups of ice: #{@ice}."
   end
 
   def change(lemons, sugar, ice)
