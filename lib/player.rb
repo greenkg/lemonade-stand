@@ -62,6 +62,7 @@ class Player
 
   def update_base_customers(prior_day_customers)
     growth_from_prior_day = prior_day_customers * @recipe.avg_enjoyment * 0.25
+    puts "Avg enjoyment was: #{@recipe.avg_enjoyment}. Growth in customer base is: #{growth}"
     @base_customers = @base_customers + growth_from_prior_day.to_i
   end
 

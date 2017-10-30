@@ -37,8 +37,8 @@ class Inventory
   end
 
   def make_pitchers(n)
-    @inventory[:pitchers] += 1
-    puts "You made one pitcher of lemonade!"
+    @inventory[:pitchers] += n
+    puts "You made #{n} pitchers of lemonade!"
   end
 
   def get_price(item)
