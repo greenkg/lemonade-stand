@@ -58,12 +58,14 @@ class Player
     @inventory.add_cash(revenue)
     @inventory.use_cups(day.customers)
     @inventory.use_pitchers
+    update_base_customers(day.customers)
   end   
 
   def update_base_customers(prior_day_customers)
     growth_from_prior_day = prior_day_customers * @recipe.avg_enjoyment * 0.25
-    puts "Avg enjoyment was: #{@recipe.avg_enjoyment}. Growth in customer base is: #{growth}"
-    @base_customers = @base_customers + growth_from_prior_day.to_i
+    puts "Avg enjoyment was: #{@recipe.avg_enjoyment}. Growth in customer base is: #{growth_from_prior_day}"
+    @base_customers = @base_customers + growth_from_prior_day
+    @base_customers.to_i
   end
 
 end
