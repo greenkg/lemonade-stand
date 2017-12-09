@@ -11,6 +11,7 @@ class Game
     \nA pitcher of lemonade is 10 cups.
     \nYou can enter actions: buy lemons (or sugar, ice, cups),
     \nmake lemonade, and start day.".freeze
+
   def initialize
     @player = Player.new
     @day = 1

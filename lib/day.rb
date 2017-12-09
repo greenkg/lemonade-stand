@@ -5,9 +5,9 @@ class Day
   attr_reader :customers
 
   def initialize(max_customers, base_customers, recipe_enjoyment)
-    @max_customerr = max_customers
+    @max_customers = max_customers
     @base_customers = base_customers
-    @recipe_enjoyment = max_customers
+    @recipe_enjoyment = recipe_enjoyment
     @gaussian = Gaussian.new(base_customers, base_customers / 2)
     @customers = generate_customers
   end

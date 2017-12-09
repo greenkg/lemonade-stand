@@ -2,7 +2,7 @@
 class Gaussian
   attr_reader :range
 
-  def initialize(mean = 0.0, stddev = 1.0, range -> { Kernel.rand })
+  def initialize(mean = 0.0, stddev = 1.0, range = lambda { Kernel.rand })
     @mean = mean
     @stddev = stddev
     @range = range

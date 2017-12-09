@@ -1,7 +1,7 @@
 # Manages player inventory, including cash
 class Inventory
   def initialize
-    @inventory = { cash => 100, lemons => 2, sugar => 2, ice => 2, cups => 20, pitchers => 2 }
+    @inventory = { cash: 100, lemons: 2, sugar: 2, ice: 2, cups: 20, pitchers: 2 }
   end
 
   def print_inventory
