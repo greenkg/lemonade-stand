@@ -1,7 +1,7 @@
+# Accept and carry out player actions
 require_relative 'day'
 require_relative 'inventory'
 require_relative 'recipe'
-
 
 class Player
 
@@ -19,7 +19,7 @@ class Player
     @recipe.print_recipe
   end
 
-  def has_cash?
+  def cash?
     @inventory.get_cash > 0
   end
 
@@ -27,7 +27,6 @@ class Player
     n = n.to_i
     item = item.to_sym
     total_cost = @inventory.get_price(item) * n
-    
     if total_cost < @inventory.get_cash
       puts "You bought #{n} #{item} for $#{total_cost}"
       @inventory.buy_items(item, n)
@@ -41,12 +40,13 @@ class Player
     qty = qty.to_i
     if @inventory.get_lemons >= @recipe.lemons * qty && @inventory.get_sugar >= @recipe.sugar * qty && @inventory.get_ice >= @recipe.ice * qty
       @inventory.make_pitchers(qty)
-      @inventory.use_lemons(@recipe.lemons*  qty)
+      @inventory.use_lemons(@recipe.lemons * qty)
       @inventory.use_sugar(@recipe.sugar * qty)
-      @inventory.use_ice(@recipe.ice * qty)      
+      @inventory.use_ice(@recipe.ice * qty)
       @inventory.print_inventory
     else
-      puts "You need #{@recipe.lemons * qty} lemons, #{@recipe.sugar * qty} cups of sugar, and #{@recipe.ice * qty} bags of ice to make #{qty} pitchers of lemonade."
+      puts "You need #{@recipe.lemons * qty} lemons, #{@recipe.sugar * qty} cups of sugar,
+      \nand #{@recipe.ice * qty} bags of ice to make #{qty} pitchers of lemonade."
     end
   end
 
@@ -58,12 +58,12 @@ class Player
     @inventory.add_cash(revenue)
     @inventory.use_supplies(day.customers)
     update_base_customers(day.customers)
-  end   
+  end
 
   def update_base_customers(prior_day_customers)
     growth_from_prior_day = prior_day_customers * @recipe.avg_enjoyment * 0.25
-    puts "Avg enjoyment was: #{@recipe.avg_enjoyment}. Growth in customer base is: #{growth_from_prior_day}"
+    puts "Avg enjoyment was: #{@recipe.avg_enjoyment}.
+    \nGrowth in customer base is: #{growth_from_prior_day}"
     @base_customers = (@base_customers + growth_from_prior_day).to_i
   end
-
 end

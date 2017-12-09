@@ -1,9 +1,11 @@
+# Gaussian is used to generate a random number clustered around a midpoint
 class Gaussian
-
   attr_reader :range
 
-  def initialize(mean = 0.0, stddev = 1.0, range = lambda { Kernel.rand })
-    @mean, @stddev, @range = mean, stddev, range
+  def initialize(mean = 0.0, stddev = 1.0, range -> { Kernel.rand })
+    @mean = mean
+    @stddev = stddev
+    @range = range
     @compute_next_pair = false
   end
 
@@ -18,4 +20,5 @@ class Gaussian
       @g1
     end
   end
+  
 end

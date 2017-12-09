@@ -1,15 +1,15 @@
+# Manages player inventory, including cash
 class Inventory
-
   def initialize
-    @inventory = {:cash => 100, :lemons => 2, :sugar => 2, :ice => 2, :cups => 20, :pitchers => 2}
+    @inventory = { cash => 100, lemons => 2, sugar => 2, ice => 2, cups => 20, pitchers => 2 }
   end
 
   def print_inventory
-    puts "*" * 10
+    puts '*' * 10
     puts "CASH: $#{get_cash}"
     puts "INVENTORY: Lemons: #{get_lemons} lemons. Sugar: #{get_sugar} cups. Ice: #{get_ice} cups. Cups: #{get_cups} cups"
     puts "Pitchers of lemonade: #{get_pitchers} pitchers"
-    puts "*" * 10
+    puts '*' * 10
   end
 
   def get_cash
@@ -87,12 +87,12 @@ class Inventory
 
   def toss_pitchers
     @inventory[:pitchers] = 0
-    puts "Any left over lemonade was thrown away."
+    puts 'Any left over lemonade was thrown away.'
   end
 
   def melt_ice
     @inventory[:ice] = 0
-    puts "All of your ice melted."
+    puts 'All of your ice melted.'
   end
 
   def spoil_lemons
@@ -105,9 +105,4 @@ class Inventory
     @inventory[item] += quantity
     @inventory[:cash] -= (quantity * get_price(item))
   end
-
 end
-
-myInventory = Inventory.new
-myInventory.print_inventory
-myInventory.spoil_lemons
